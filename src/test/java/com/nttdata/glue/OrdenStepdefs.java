@@ -7,6 +7,10 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
+import static net.serenitybdd.rest.SerenityRest.lastResponse;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+
 public class OrdenStepdefs {
 
     @Steps
@@ -29,6 +33,16 @@ public class OrdenStepdefs {
         ordenMascota.validacionCodigoRespuesta(arg0);
     }
 
+    @And("valido que el petid sea {int}")
+    public void validoQueElPetidSea(int arg0) {
+        ordenMascota.validoPetId(arg0);
+    }
+
+    @And("valido que el registro marque completado")
+    public void validoQueElRegistroMarqueCompletado() {
+        ordenMascota.validoRegistroCompletado();
+    }
+
     @Given("dado que estoy en la tienda")
     public void dadoQueEstoyEnLaTienda() {
     }
@@ -46,4 +60,6 @@ public class OrdenStepdefs {
     public void validoCodigoDeRespuestaDeLaConsultaSea(int arg0) {
         ordenMascota.validacionCodigoRespuesta(arg0);
     }
+
+
 }

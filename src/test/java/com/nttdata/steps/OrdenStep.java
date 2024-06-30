@@ -23,7 +23,7 @@ public class OrdenStep {
                             .get("/store/order/"+id)
                             .as(Order.class)
                     ;
-
+        assertThat(lastResponse().getBody().path("id"), equalTo(id));
     }
     public void ordenMascota(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5){
         int id = Integer.parseInt(arg0);
@@ -46,6 +46,14 @@ public class OrdenStep {
                 .log()
                 .all();
 
+    }
+
+    public void validoPetId(int petid){
+        assertThat(lastResponse().getBody().path("petId"), equalTo(petid));
+    }
+
+    public void validoRegistroCompletado(){
+        assertThat(lastResponse().getBody().path("complete"), equalTo(true));
     }
 
     public void validacionCodigoRespuesta(int codigo){
